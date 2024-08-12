@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MockData.Net" Version="1.0.1" />
+    <PackageReference Include="System.Runtime.Caching" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RedisTest.Entities\RedisTest.Entities.csproj" />
+    <ProjectReference Include="..\RedisTest.Repository\RedisTest.DataAccess.csproj" />
+    <ProjectReference Include="..\RedisTest.Share\RedisTest.Share.csproj" />
+  </ItemGroup>
+
+</Project>
