@@ -66,7 +66,7 @@ namespace RedisTest.Share
             return _db.CreateTransaction();
         }
         /// <summary>
-        /// 单实例锁，加锁
+        /// 加锁
         /// </summary>
         /// <returns></returns>
         public async Task<bool> TryLockAsync(string lockKey, string guidStr, TimeSpan lockTimeout)
@@ -1413,7 +1413,7 @@ BF.LOADCHUNK	恢复之前使用BF.SCANDUMP保存的布隆过滤器。
         可以使用del key。删除布隆过滤器，但是不支持移除成员
         BF.ADD、BF.MADD、BF.INSERT(不指定NOCREATE参数)执行时，不存在key时自动创建布隆过滤器key，默认值：Capacity: 100; error_rate：0.01。也可以主动执行 BF.RESERVE 创建key，自定义初始容量和误判率
         BF.RESERVE error_rate越低，需要的空间越大。当过滤器内存在的数量超过指定 Capacity，会创建子过滤器误判率会增加。所以一开始要准备好 Capacity
-        BF.INSERT 若指定NOCREATE参数，不存在key时则不创建key并报错——(error) ERR not found。若指定NONSCALING参数，当过滤器达到最大容量时，不创建子过滤器，并报错——
+        BF.INSERT 若指定NOCREATE参数，不存在key时则不创建key并报错——(error) ERR not found。若指定NONSCALING参数，当过滤器达到最大容量时，不创建子过滤器，并报错——ERR non scaling filter is full
 
          */
         /// <summary>
