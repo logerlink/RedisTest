@@ -147,7 +147,7 @@ namespace RedisTest.Share
         public string? StringGet(string redisKey, TimeSpan? expiry = null)
         {
             redisKey = AddKeyPrefix(redisKey);
-            return _db.StringGet(redisKey);
+            return _db.StringGet(redisKey, CommandFlags.PreferReplica);
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace RedisTest.Share
         public T? StringGet<T>(string redisKey, TimeSpan? expiry = null)
         {
             redisKey = AddKeyPrefix(redisKey);
-            return JSONDeSerialize<T>(_db.StringGet(redisKey));
+            return JSONDeSerialize<T>(_db.StringGet(redisKey, CommandFlags.PreferReplica));
         }
 
         #region async
@@ -213,7 +213,7 @@ namespace RedisTest.Share
         public async Task<string?> StringGetAsync(string redisKey, string redisValue, TimeSpan? expiry = null)
         {
             redisKey = AddKeyPrefix(redisKey);
-            return await _db.StringGetAsync(redisKey);
+            return await _db.StringGetAsync(redisKey, CommandFlags.PreferReplica);
         }
 
         /// <summary>
@@ -239,7 +239,7 @@ namespace RedisTest.Share
         public async Task<T?> StringGetAsync<T>(string redisKey, TimeSpan? expiry = null)
         {
             redisKey = AddKeyPrefix(redisKey);
-            return JSONDeSerialize<T>(await _db.StringGetAsync(redisKey));
+            return JSONDeSerialize<T>(await _db.StringGetAsync(redisKey, CommandFlags.PreferReplica));
         }
 
         #endregion async
@@ -317,7 +317,7 @@ namespace RedisTest.Share
         public RedisValue HashGet(string redisKey, string hashField)
         {
             redisKey = AddKeyPrefix(redisKey);
-            return _db.HashGet(redisKey, hashField);
+            return _db.HashGet(redisKey, hashField, CommandFlags.PreferReplica);
         }
 
         /// <summary>
@@ -330,7 +330,7 @@ namespace RedisTest.Share
         public RedisValue[] HashGet(string redisKey, RedisValue[] hashField, string value)
         {
             redisKey = AddKeyPrefix(redisKey);
-            return _db.HashGet(redisKey, hashField);
+            return _db.HashGet(redisKey, hashField, CommandFlags.PreferReplica);
         }
 
         /// <summary>
@@ -378,7 +378,7 @@ namespace RedisTest.Share
         public T? HashGet<T>(string redisKey, string hashField)
         {
             redisKey = AddKeyPrefix(redisKey);
-            return JSONDeSerialize<T>(_db.HashGet(redisKey, hashField));
+            return JSONDeSerialize<T>(_db.HashGet(redisKey, hashField, CommandFlags.PreferReplica));
         }
 
         #region async
@@ -452,7 +452,7 @@ namespace RedisTest.Share
         public async Task<RedisValue> HashGetAsync(string redisKey, string hashField)
         {
             redisKey = AddKeyPrefix(redisKey);
-            return await _db.HashGetAsync(redisKey, hashField);
+            return await _db.HashGetAsync(redisKey, hashField, CommandFlags.PreferReplica);
         }
 
         /// <summary>
@@ -465,7 +465,7 @@ namespace RedisTest.Share
         public async Task<IEnumerable<RedisValue>> HashGetAsync(string redisKey, RedisValue[] hashField, string value)
         {
             redisKey = AddKeyPrefix(redisKey);
-            return await _db.HashGetAsync(redisKey, hashField);
+            return await _db.HashGetAsync(redisKey, hashField, CommandFlags.PreferReplica);
         }
 
         /// <summary>
@@ -513,7 +513,7 @@ namespace RedisTest.Share
         public async Task<T?> HashGetAsync<T>(string redisKey, string hashField)
         {
             redisKey = AddKeyPrefix(redisKey);
-            return JSONDeSerialize<T>(await _db.HashGetAsync(redisKey, hashField));
+            return JSONDeSerialize<T>(await _db.HashGetAsync(redisKey, hashField, CommandFlags.PreferReplica));
         }
 
         #endregion async

@@ -89,6 +89,11 @@ namespace RedisTest.Api.Controllers
         {
             _userService.CacheTest();
         }
+        [HttpGet("redisReplicaTest")]
+        public void RedisReplicaTest()
+        {
+            _userService.RedisReplicaTest();
+        }
 
     }
 

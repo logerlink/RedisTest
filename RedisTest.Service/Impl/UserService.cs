@@ -448,6 +448,32 @@ namespace RedisTest.Service.Impl
             cache.Remove("newKey");
 
         }
+        /// <summary>
+        /// redis 简单演示
+        /// </summary>
+        public void RedisReplicaTest()
+        {
+            var key = "redis_key";
+            try
+            {
+                _redis.StringSet(key, "Hello world");
+                _logger.LogInformation($"RedisReplicaTest 设置缓存成功");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"RedisReplicaTest 设置缓存失败，{ex.Message}");
+            }
+
+            try
+            {
+                var data = _redis.StringGet("redis_key");
+                _logger.LogInformation($"RedisReplicaTest 读取缓存成功");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"RedisReplicaTest 读取缓存失败，{ex.Message}");
+            }
+        }
 
     }
 }

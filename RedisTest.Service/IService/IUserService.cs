@@ -22,6 +22,7 @@ namespace RedisTest.Service.IService
         Task LoadAgeBloomAsync(string? logGuid = null);
 
         void CacheTest();
+        void RedisReplicaTest();
 
     }
 }
