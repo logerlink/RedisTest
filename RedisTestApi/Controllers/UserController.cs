@@ -95,6 +95,12 @@ namespace RedisTest.Api.Controllers
             _userService.RedisReplicaTest();
         }
 
+        [HttpGet("redisReplicaSentinelTest")]
+        public void RedisReplicaSentinelTest()
+        {
+            _userService.RedisReplicaSentinelTest();
+        }
+
     }
 
 

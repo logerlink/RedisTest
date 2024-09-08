@@ -23,6 +23,7 @@ namespace RedisTest.Service.IService
 
         void CacheTest();
         void RedisReplicaTest();
+        void RedisReplicaSentinelTest();
 
     }
 }
