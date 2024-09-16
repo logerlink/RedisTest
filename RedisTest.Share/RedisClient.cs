@@ -648,6 +648,31 @@ namespace RedisTest.Share
             return _db.ListLeftPush(redisKey, JSONSerialize(redisValue));
         }
 
+        /// <summary>
+        /// 列表批量插入 cluster集群下不要使用
+        /// </summary>
+        /// <param name="redisKey"></param>
+        /// <param name="redisValue"></param>
+        /// <returns></returns>
+        public async Task<long> ListPushAsync(string redisKey, IEnumerable<RedisValue> values)
+        {
+            redisKey = AddKeyPrefix(redisKey);
+            return (long)await _db.ExecuteAsync("LPUSH", values.Cast<object>().Prepend(redisKey).ToArray());
+        }
+
+        /// <summary>
+        /// 无序列表批量插入 cluster集群下不要使用
+        /// </summary>
+        /// <param name="redisKey"></param>
+        /// <param name="redisValue"></param>
+        /// <returns></returns>
+        public async Task<long> SetAddAsync(string redisKey, IEnumerable<RedisValue> values)
+        {
+            redisKey = AddKeyPrefix(redisKey);
+            return (long)await _db.ExecuteAsync("SADD", values.Cast<object>().Prepend(redisKey).ToArray());
+        }
+
+
         #region List-async
 
         /// <summary>
