@@ -25,5 +25,7 @@ namespace RedisTest.Service.IService
         void RedisReplicaTest();
         void RedisReplicaSentinelTest();
 
+        void RedisClusterTest();
+
     }
 }

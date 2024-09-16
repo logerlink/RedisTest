@@ -475,8 +475,6 @@ namespace RedisTest.Service.Impl
             }
         }
 
-
-
         /// <summary>
         /// redis 主从模式+哨兵简单演示
         /// </summary>
@@ -502,6 +500,34 @@ namespace RedisTest.Service.Impl
             catch (Exception ex)
             {
                 _logger.LogError($"RedisReplicaSentinelTest 读取缓存失败，{ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// redis 分片集群简单演示
+        /// </summary>
+        public void RedisClusterTest()
+        {
+            var key = "redis_cluster_key_" + Guid.NewGuid();
+            try
+            {
+                var success = _redis.StringSet(key, "Hello world");
+                if (success) _logger.LogInformation($"RedisClusterTest 设置缓存成功");
+                else _logger.LogError($"RedisClusterTest 设置缓存失败");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"RedisClusterTest 设置缓存失败，{ex.Message}");
+            }
+
+            try
+            {
+                var data = _redis.StringGet(key);
+                _logger.LogInformation($"RedisClusterTest 读取缓存成功");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"RedisClusterTest 读取缓存失败，{ex.Message}");
             }
         }
 
